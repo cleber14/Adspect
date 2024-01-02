@@ -17,12 +17,20 @@
         <a class="menu" href="#">Biografia</a>
         <a class="menu" href="#">Loja</a>
     </nav>
-    <button onclick="clique()" class="lateral-menu">
+    <button class="lateral-menu" onclick="clique()">
         <img class="img-lateral-menu hide" src="https://cdn-icons-png.flaticon.com/512/56/56763.png" alt="lateral-menu">
     </button>
+    
+    <button onclick="fechar()" id="close-menu">
+        <img src="https://www.pngall.com/wp-content/uploads/5/Black-X-Letter-PNG-Free-Image.png" alt="close-button">
+    </button>
 
-    <section class="container-lateral-menu">
-
+    <section id="container-lateral-menu">
+        <a class="menu" href="#">Menu</a>
+        <a class="menu" href="#">Serviços</a>
+        <a class="menu" href="#">Suporte</a>
+        <a class="menu" href="#">Biografia</a>
+        <a class="menu" href="#">Loja</a>
     </section>
 
     <main>
@@ -49,9 +57,9 @@
         </section>
 
         <section class="container-interactive-buttons">
-            <img src="img/pngtree-instagram-social-media-icon-png-image_6618438.png" alt="instagram-link">
-            <img src="img/Facebook.png" alt="facebook-link">
-            <img src="img/Whatsapp.png" alt="whatsapp-link">
+            <a href="https://www.instagram.com/ads_pect/" target="_blank"><img class="img1" src="img/pngtree-instagram-social-media-icon-png-image_6618438.png" alt="instagram-link"></a>
+            <a href="https://www.facebook.com/ads_pect/" target="_blank"><img class="img2" src="img/Facebook.png" alt="facebook-link"></a>
+            <a href="https://www.whatsapp.com/ads_pect/" target="_blank"><img class="img3" src="img/Whatsapp.png" alt="whatsapp-link"></a>
         </section>
 
         <section class="container-articles" id="container-articles-2">
@@ -67,10 +75,49 @@
                 </p>
             </article>
         </section>
-        <script src="script.js"></script>
+        <script>
+    let currentSlide = 1;
+    let lateralButton = document.querySelector(".lateral-menu");
+    let lateralBar = document.getElementById("container-lateral-menu");
+    let closeButton = document.getElementById("close-menu")
+    lateralButton.addEventListener("click", clique);
+
+    function clique() {
+        lateralBar.style.display = 'block';
+        lateralButton.style.display = 'none';
+        closeButton.style.display = 'block';
+    }
+
+    function fechar() {
+        lateralBar.style.display = 'none';
+        lateralButton.style.display = 'block';
+        closeButton.style.display = 'none';
+    }
+
+    function showSlide(n) {
+        let slides = document.getElementsByClassName("images");
+
+        if (n > slides.length) {
+            currentSlide = 1;
+        } else if (n < 1) {
+            currentSlide = slides.length;
+        }
+        for (let i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        slides[currentSlide - 1].style.display = "block";
+    }
+
+    function changeSlide(n) {
+        showSlide(currentSlide += n);
+    }
+
+    // Inicializa o slide
+    showSlide(currentSlide);
+        </script>
     </main>
     <footer>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis ut ipsa laudantium dolorem veniam blanditiis rem dicta hic dolorum eaque delectus id ipsam qui aperiam, officia porro officiis fuga. Accusamus!</p>
+        <p>Adspect © essa pagina possui conteúdos com direitos autorais.</p>
     </footer>
 </body>
 </html>
